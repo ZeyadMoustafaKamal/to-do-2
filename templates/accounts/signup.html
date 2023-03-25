@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="sign-up" method="post">
+  {% csrf_token %}
+    <h2>Sign Up</h2>
+    {% include 'partials/_alerts.html' %}
+    <p>
+        <label for="{{ form.email.id_for_label }}">Email:</label>
+        {{ form.email }}
+    </p>
+    <p>
+        <label for="{{ form.password.id_for_label }}">password:</label>
+        {{ form.password }}
+    </p>
+
+    <input type="submit" value="Sign up">
+
+  </form>
+{% endblock %}

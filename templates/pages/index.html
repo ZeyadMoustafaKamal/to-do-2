@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Hello in my ToDo app</h1>
+    <div class="alert alert-danger" role="alert">
+        Please, don't enter any sensetive data because this is just a test website
+    </div>
+{% include 'partials/_alerts.html' %}
+{% if user.is_authenticated and user.verified %}
+
+    <div class="add-form">
+        <form method="get" class="add-task-form">
+            <input type="text" name="task-to-add" style="background-color: #333;" class="add-task-input" placeholder="Add new task...">
+            <button type="submit" name="add-task" class="add-task-button">Add</button>
+        </form>
+    </div>
+<form method="post">
+        {% csrf_token %}
+    <ul class="todo-list">
+        
+        {% for task in tasks %}
+        <li  class="todo-item task">
+            <ul>
+            <li><input name="check" value="{{task.id}}" {% if task.is_done %} checked {% endif %} type="checkbox" class="checkbox"></li>
+            <li><span
+
+            {% if task.is_done %}
+            class="todo-text completed"
+            
+            {% else %}
+            class="todo-text"
+            {% endif %}>
+            
+            {{task.name}}</span></li>
+            </ul>
+            <ul>
+                <li>
+            <button type="submit" value="{{task.id}}" style="margin-right: 20px;" name="btndelete" class="btn btn-danger">Delete</button>
+        </li>
+        </ul>
+        </li>
+        {% endfor %}
+    </ul>
+    
+    <button style="margin-bottom: 20px;" class="add-task-button" type="submit" name="submit-tasks">Submit</button>
+</form>
+
+{% else %}
+
+<div class="alert alert-danger" role="alert">
+    Please, <a class="text-warning" style="text-decoration: none;" href="{% url 'login' %}">Login</a>  into your account or <a class="text-warning" style="text-decoration: none;" href="{% url 'signup' %}">create one</a>
+</div>
+{% endif %}
+</div>
+{% endblock %}

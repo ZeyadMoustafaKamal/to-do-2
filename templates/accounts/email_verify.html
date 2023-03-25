@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="alert alert-success" role="alert">
+  Please check the E-Mail and click on the link to continue or click 
+  <form method="post" style="display: inline;">
+    {% csrf_token %}
+    <button style="background-color: transparent;border: none;color: red;" type="submit">here</button>
+  </form> 
+  to send another code
+</div>
+{% endblock %}
