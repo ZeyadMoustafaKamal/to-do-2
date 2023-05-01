@@ -1,1 +1,15 @@
-{"builds": [{"src": "todo/wsgi.py","use": "@vercel/python"}],"routes": [{"src": "/(.*)","dest": "todo/wsgi.py"}]}
+{
+    "builds": [
+        {
+            "src": "todo/wsgi.py",
+            "use": "@vercel/python",
+            "command":"py manage.py migrate ; py manage.py collectstatic"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "todo/wsgi.py"
+        }
+    ]
+}
