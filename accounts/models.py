@@ -3,7 +3,6 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from .managers import CustomUserManager
 from django.utils.translation import gettext as _
-from django.conf import settings
 
 class CustomUser(AbstractUser):
 

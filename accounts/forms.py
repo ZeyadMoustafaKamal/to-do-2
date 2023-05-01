@@ -2,6 +2,7 @@ from django import forms
 from .models import CustomUser
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
+
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(label='E-mail',error_messages={'required':'You have to enter the E-mail'})
     password = forms.CharField(widget=forms.PasswordInput(), label='Password',error_messages={'required':'You have to enter the password'})
@@ -24,8 +25,7 @@ class SignUpForm(UserCreationForm):
         if len(password) < 8:
             raise forms.ValidationError('The password should be at least 8 characters')
         return password
-    def save(self, commit):
-        return super().save(commit)
+
 
 class LoginForm(forms.Form):
     email = forms.EmailField(label='E-mail')
