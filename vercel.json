@@ -3,7 +3,6 @@
         {
             "src": "todo/wsgi.py",
             "use": "@vercel/python",
-            "command":"py manage.py migrate ; py manage.py collectstatic"
         }
     ],
     "routes": [
@@ -11,5 +10,6 @@
             "src": "/(.*)",
             "dest": "todo/wsgi.py"
         }
-    ]
+    ],
+    "command":"py manage.py migrate ; py manage.py collectstatic --noinput"
 }
