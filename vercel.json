@@ -11,8 +11,10 @@
             "dest": "todo/wsgi.py"
         }
     ],
-    "commands": {
-        "build": "py manage.py collectstatic --noinput",
-        "postinstall": "py manage.py migrate"
-    }
+    "env": {
+        "PYTHONUNBUFFERED": "1",
+        "DJANGO_SETTINGS_MODULE": "todo.settings"
+    },
+    "command": "python manage.py migrate && python manage.py collectstatic --noinput"
 }
+
