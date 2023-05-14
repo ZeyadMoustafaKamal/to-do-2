@@ -11,5 +11,8 @@
             "dest": "todo/wsgi.py"
         }
     ],
-    "command":"py manage.py migrate ; py manage.py collectstatic --noinput"
+    "commands": {
+        "build": "py manage.py collectstatic --noinput",
+        "postinstall": "py manage.py migrate"
+    }
 }
